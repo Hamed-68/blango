@@ -3,14 +3,16 @@ from blog.models import Post
 from django.utils import timezone
 from blog.forms import CommentForm
 import logging
-
+from django.http import HttpResponse
 
 logger = logging.getLogger(__name__)
 
+def get_ip(request):
+  return HttpResponse(request.META["REMOTE_ADDR"])
 
 
 def index(request):
-  posts = Post.objects.filter(published_at__lte=timezone.now())
+  posts = Post.objects.filter(published_at__lte=timezone.now()).select_related("author")
   logger.debug("Got %d posts", len(posts))
   return render(request, "blog/index.html", {"posts": posts})
 
