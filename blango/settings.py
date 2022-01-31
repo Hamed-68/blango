@@ -50,7 +50,8 @@ class Dev(Configuration):
         'django.contrib.messages',
         'django.contrib.staticfiles',
         # added appes
-        'blog',
+        'blango_auth.apps.BlangoAuthConfig',
+        'blog.apps.BlogConfig',
         'crispy_forms',
         'crispy_bootstrap5',
         'debug_toolbar',
@@ -175,3 +176,5 @@ class Dev(Configuration):
     ]
 
     INTERNAL_IPS = ["192.168.10.93"]
+    
+    AUTH_USER_MODEL = "blango_auth.User"
