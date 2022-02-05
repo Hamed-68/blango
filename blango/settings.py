@@ -49,7 +49,7 @@ class Dev(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
-        # added appes
+        # added apps
         'blango_auth.apps.BlangoAuthConfig',
         'blog.apps.BlogConfig',
         'crispy_forms',
@@ -178,3 +178,7 @@ class Dev(Configuration):
     INTERNAL_IPS = ["192.168.10.93"]
     
     AUTH_USER_MODEL = "blango_auth.User"
+
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    ACCOUNT_ACTIVATION_DAYS = 7
+    # REGISTRATION_OPEN = False
